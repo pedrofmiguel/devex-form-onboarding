@@ -26,6 +26,13 @@ const Onboarding: NextPage = () => {
     const [fileText, setFileText] = useState('')  
     const [boxText, setBoxText] = useState("Drop it like it's hot 🔥")
     // Similar to componentDidMount and componentDidUpdate:
+
+
+    // I used the use effect here to load the event listeners of the drop area
+    // they weren't listening correctly so this was the only way i found to make it work
+    //everything was working fine, 
+    // but the log in line 64 returns null and does not read the file
+    // check this link to see the logs -> https://prnt.sc/5ZvzWHlkcWbY
     useEffect(() => {
         // Update the document title using the browser API
         console.log("Loaded Use Effect 🌧")
