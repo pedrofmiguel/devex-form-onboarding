@@ -23,7 +23,7 @@ type Validation = {
 
 const Onboarding: NextPage = () => {
     const dropRef = useRef(null);
-    const [fileText, setFileText] = useState('')  
+    const [fileText, setFileText] = useState('')
     const [boxText, setBoxText] = useState("Drop it like it's hot 🔥")
     // Similar to componentDidMount and componentDidUpdate:
 
@@ -42,8 +42,8 @@ const Onboarding: NextPage = () => {
             event.preventDefault();
             console.log("Drag Enter 🚪")
             setBoxText("Let it Go 👋")
-            console.log("Event ➡️",event);
-        }); 
+            console.log("Event ➡️", event);
+        });
         dropArea.addEventListener('dragleave', (event: any) => {
             event.stopPropagation();
             event.preventDefault();
@@ -54,15 +54,15 @@ const Onboarding: NextPage = () => {
             event.stopPropagation();
             event.preventDefault();
         })
-        
-        const readAsDataURL = (file:any) => {
+
+        const readAsDataURL = (file: any) => {
             return new Promise((resolve, reject) => {
-              const fr = new FileReader()
-              fr.onerror = reject
-              fr.onload = function () {
-                resolve(fr.result)
-              }
-              console.log("file ➡️", fr.readAsText(file))
+                const fr = new FileReader()
+                fr.onerror = reject
+                fr.onload = function () {
+                    resolve(fr.result)
+                }
+                console.log("file ➡️", fr.readAsText(file))
             })
         }
 
@@ -72,23 +72,23 @@ const Onboarding: NextPage = () => {
             event.preventDefault();
             const files = event.target.files || event.dataTransfer.files;
             const file = files[0]
-            if(file.type != "image") {
+            if (file.type != "image") {
                 readAsDataURL(file)
             }
-        }); 
-    },[]);
-    
-    
-    const minLength = (s: string): Either<string, string> =>
-    s.length >= 6 ? right(s) : left('at least 6 characters')
-    
-    const oneCapital = (s: string): Either<string, string> =>
-    /[A-Z]/g.test(s) ? right(s) : left('at least one capital letter')
-    
-    const oneNumber = (s: string): Either<string, string> =>
-    /[0-9]/g.test(s) ? right(s) : left('at least one number')
+        });
+    }, []);
 
-    const noNumber = (s:string): Either<string, string> => /\d/.test(s) ? right(s) : left('Cannot have any number')
+
+    const minLength = (s: string): Either<string, string> =>
+        s.length >= 6 ? right(s) : left('at least 6 characters')
+
+    const oneCapital = (s: string): Either<string, string> =>
+        /[A-Z]/g.test(s) ? right(s) : left('at least one capital letter')
+
+    const oneNumber = (s: string): Either<string, string> =>
+        /[0-9]/g.test(s) ? right(s) : left('at least one number')
+
+    const noNumber = (s: string): Either<string, string> => /\d/.test(s) ? right(s) : left('Cannot have any number')
 
     const cannotBeEmpty = (s: string): Either<string, string> => s.trim().length ? right(s) : left('cannot be empty')
 
@@ -99,21 +99,21 @@ const Onboarding: NextPage = () => {
         chain(oneCapital),
     )
 
-    const validateLineWithnoSpaces = (s:string): Either<string, string> => pipe(
+    const validateLineWithnoSpaces = (s: string): Either<string, string> => pipe(
         s,
         cannotBeEmpty
     )
 
-  return (
-    <div>
-        <main className={styles.fileContainer}>
-            <h1 className="onboard_form_title"> Drop your file here 👇</h1>
-            <div ref={dropRef} className={styles.fileDrop}>
-                {boxText}
-            </div>
-        </main>
-    </div>
-  )
+    return (
+        <div>
+            <main className={styles.fileContainer}>
+                <h1 className="onboard_form_title"> Drop your file here 👇</h1>
+                <div ref={dropRef} className={styles.fileDrop}>
+                    {boxText}
+                </div>
+            </main>
+        </div>
+    )
 }
 
 export default Onboarding
