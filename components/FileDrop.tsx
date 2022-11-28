@@ -9,7 +9,8 @@ type FileDropProps = {
     dropRef?: any
 }
 
-export default function FileDrop({ dropRef }): FileDropProps {
+//explore how to add custom type to this
+export default function FileDrop({ dropRef }) {
     const [boxText, setBoxText] = useState("Drop it like it's hot 🔥")
     // Similar to componentDidMount and componentDidUpdate:
     // I used the use effect here to load the event listeners of the drop area

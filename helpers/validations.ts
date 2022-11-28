@@ -65,3 +65,7 @@ export const processFile = (f: HTMLInputElement): Either<HTMLInputElement, File>
     isFileValid,
     chain(readAsDataURL),
 );
+
+//future function to read file content, first separate all lines
+//and receive from array
+const readAllFileLines = (lines: Array<string>): Either<Array<string>, Array<string>> => pipe()
