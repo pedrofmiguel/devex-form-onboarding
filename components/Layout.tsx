@@ -2,9 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import styles from '../styles/Home.module.scss'
 
-export default function Layout({ children }: { children: JSX.Element | JSX.Element[] }) {
+export default function Layout({ children, styles }: { children: JSX.Element | JSX.Element[], styles: any }) {
     return (
         <div className={styles.container}>
             <Head>

@@ -18,6 +18,25 @@ export default function FileDrop({ dropRef }) {
     //everything was working fine, 
     // but the log in line 64 returns null and does not read the file
     // check this link to see the logs -> https://prnt.sc/5ZvzWHlkcWbY
+
+    // will change the type in this later
+    async function fileRead(event: any) {
+        console.log("File drop analyzer 👇")
+        event.stopPropagation();
+        event.preventDefault();
+        const files = event.target.files || event.dataTransfer.files;
+        const processedFile = files[0]
+        console.log("Oi")
+        await processFile(processedFile)
+            .then((result: Promise<unknown>) => {
+                console.log("NEW FILE 👺", result)
+            })
+            .catch((err: Promise<unknown>) => {
+                console.log("Error", err)
+            })
+        console.log("after await ⏰")
+    }
+
     useEffect(() => {
         // Update the document title using the browser API
         console.log("Loaded Use Effect 🌧")
@@ -37,21 +56,14 @@ export default function FileDrop({ dropRef }) {
         })
 
         // prevent the browser to open a tab with the file when dropping.
+
         dropArea.addEventListener('dragover', (event: any) => {
             event.stopPropagation();
             event.preventDefault();
         })
 
-        dropArea.addEventListener('drop', (event: any) => {
-            console.log("File drop analyzer 👇")
-            event.stopPropagation();
-            event.preventDefault();
-            const files = event.target.files || event.dataTransfer.files;
-            const file = files[0]
-            if (file.type != "image") {
-                processFile(file)
-            }
-        });
+        dropArea.addEventListener("drop", (event: any) => fileRead(event), false);
+
     }, []);
 
     return (

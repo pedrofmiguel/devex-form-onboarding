@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import { useState, useEffect, useRef, useCallback } from "react"
-import Emoji from '../../components/Emoji'
+import Emoji from '../components/Emoji'
 import styles from '../styles/FileChecker.module.css'
 import { render } from 'react-dom'
-import { validateEmail, validateName } from '../../helpers/validations'
-import FileDrop from '../../components/FileDrop'
+import { validateEmail, validateName } from '../helpers/validations'
+import FileDrop from '../components/FileDrop'
 //todo: refactor and add the correct 
 // add the pipe functions to make corrections to the validations
 // add Option validations to the variables

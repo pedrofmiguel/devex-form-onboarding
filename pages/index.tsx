@@ -4,13 +4,13 @@ import Layout from '../components/Layout';
 
 const Home: NextPage = () => {
   return (
-    <Layout>
+    <Layout styles={styles}>
       <div className={styles.grid}>
-        <a href="/FormPage/FormPage" className={styles.card}>
+        <a href="/FormPage" className={styles.card}>
           <h2>Form Page &rarr;</h2>
           <p>Onboarding form task using monads.</p>
         </a>
-        <a href="/FileChecker/Filechecker" className={styles.card}>
+        <a href="/FileChecker" className={styles.card}>
           <h2>File Checker Page &rarr;</h2>
           <p>app to check file lines</p>
         </a>

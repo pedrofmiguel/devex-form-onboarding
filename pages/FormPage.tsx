@@ -3,8 +3,8 @@ import styles from '../styles/Onboard.module.css'
 import { useState, useEffect } from "react"
 import { pipe } from 'fp-ts/lib/function'
 import { Either, left, right, chain } from 'fp-ts/Either'
-import Emoji from '../../components/Emoji'
-import { validateEmail, validateName, validatePassword } from '../../helpers/validations'
+import Emoji from '../components/Emoji'
+import { validateEmail, validateName, validatePassword } from '../helpers/validations'
 
 type FormBody = {
     name: string,
